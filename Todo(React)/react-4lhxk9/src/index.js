@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery'
+import "./style.css";
 
 
 
@@ -7,33 +9,67 @@ import ReactDOM from 'react-dom';
 class App extends React.Component{
 
   state = {
-    name :'wait',
-    pos: 'Quarter',
+    task:'',
 
   }
  
- changeName =(v) => {
-   this.setState({
-     name: v.target.value
-   })
+ 
+
+ valueChange = (v) => {
+
+  this.setState({
+
+    task : v.target.value
+  })
  }
 
  onClickd = (v) =>{
-   alert("Woo");
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode(this.state.task);
+    node.appendChild(textnode);
+
+
+      var button = document.createElement("button");
+      button.innerHTML = "x";
+      node.appendChild(button);
+      node.setAttribute("class","cancel");
+
+
+
+
+
+
+
+    document.getElementById("list").appendChild(node);
+    v.preventDefault();
  }
+
+clear = (v) =>{
+var myList = document.getElementById('list');
+myList.innerHTML = '';
+  v.preventDefault();  
+}
+
     
    
   render(){
      return(
        <div>  
-          <h1>Form</h1>
-          <p>his name is {this.state.name} & his position is {this.state.pos}</p>
-         <form>
-           <input type ="text" onChange={this.changeName}/>
+          <h1>Todo List</h1>
+        <form>
+           <input type ="text" onChange={this.valueChange}/>
            <button onClick={this.onClickd}>Submit</button>
-         
+           <button onClick={this.clear}>Clear</button>
           </form>
+          <ul id = "list"> 
+            
+            
+          </ul>
+           <script>
+           
          
+           
+           </script>
        </div>
        
      )

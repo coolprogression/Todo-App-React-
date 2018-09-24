@@ -1,11 +1,12 @@
 {
-  "name": "react-4lhxk9",
+  "name": "react-7d9ces",
   "description": "",
-  "homepage": "https://stackblitz.com/edit/react-4lhxk9",
+  "homepage": "https://stackblitz.com/edit/react-7d9ces",
   "dependencies": {
     "react": "16.5.0",
     "react-dom": "16.5.0",
-    "react-scripts": "1.0.10"
+    "react-scripts": "1.0.10",
+    "jquery": "3.3.1"
   },
   "version": "0.1.0",
   "private": true,
