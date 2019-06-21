@@ -1,0 +1,51 @@
+.Title{
+
+  text-align: center;
+  color: white;
+}
+
+label{
+color:white;
+}
+.Adder{
+  text-align: center;
+}
+
+.Container{
+
+  position: relative;
+  left: 36%;
+  top: 50%;
+ opacity: .8;
+
+
+ 
+}
+
+.Container :hover{
+
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.5); 
+
+}
+
+
+.idcontain{
+  border : 3px solid black;
+  padding: 20px;
+  width: 300px;
+
+  
+  text-align:  center;
+   background-color:white;
+
+  
+  margin-bottom: 10px;
+
+}
+
+body {
+  background-color:blue
+ 
+}
