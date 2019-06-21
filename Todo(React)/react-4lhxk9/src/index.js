@@ -1,79 +1,79 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import $ from 'jquery'
-import "./style.css";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
 
 
+import Listitem from './Listitem'
+import AddItem from "./AddItem";
 
-
-class App extends React.Component{
-
+class App extends Component{
   state = {
-    task:'',
-
+    taskarr : [{task:'Ryu',id:1}, {task:'Press', id:40}]
   }
+
+
+
+   handleSubmit = e =>{
+      e.preventDefault()
+    }
+
+    deleteId = id => {
+      
+      const Taskarr = this.state.taskarr.filter(prvstate =>{
+
+       return  prvstate.id !== id;
+      }
+      
+
+      )
+
+      this.setState({
+        taskarr:Taskarr
+      })
+    }
+
+  Adding = (prop) =>{
+   prop.id = Math.random()*100*Math.random()
  
- 
 
- valueChange = (v) => {
-
-  this.setState({
-
-    task : v.target.value
-  })
- }
-
- onClickd = (v) =>{
-    var node = document.createElement("LI");
-    var textnode = document.createTextNode(this.state.task);
-    node.appendChild(textnode);
-
-
-      var button = document.createElement("button");
-      button.innerHTML = "x";
-      node.appendChild(button);
-      node.setAttribute("class","cancel");
-
-
-
-
-
-
-
-    document.getElementById("list").appendChild(node);
-    v.preventDefault();
- }
-
-clear = (v) =>{
-var myList = document.getElementById('list');
-myList.innerHTML = '';
-  v.preventDefault();  
-}
-
+   let edit = [...this.state.taskarr , prop];
+  
     
-   
-  render(){
-     return(
-       <div>  
-          <h1>Todo List</h1>
-        <form>
-           <input type ="text" onChange={this.valueChange}/>
-           <button onClick={this.onClickd}>Submit</button>
-           <button onClick={this.clear}>Clear</button>
-          </form>
-          <ul id = "list"> 
-            
-            
-          </ul>
-           <script>
-           
-         
-           
-           </script>
-       </div>
-       
-     )
-  }
-}
+  
+   this.setState({
 
-ReactDOM.render(<App />,document.getElementById('app'));
+    taskarr: edit
+
+   })
+   
+  }
+
+      
+    
+
+
+
+  render(){
+    
+    
+
+  
+
+    return(
+      <div className = 'Bod'> 
+        <h1 className='Title'>Todo - React</h1>
+        
+               <AddItem Adding ={this.Adding}  className = 'Query'/>
+               <br></br>
+         < Listitem taskarr = {this.state.taskarr} deleteId={this.deleteId}/>
+         
+      </div>
+    )
+  }
+  }
+
+
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
